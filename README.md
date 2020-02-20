@@ -159,6 +159,17 @@ Accept an offer in the market
 
 When P changes as a result of acceppting an offer, the `onPoolChange` endpoint is not invoked.
 
+#### * PUT `agent/globalRecipe`
+
+Choose a global recipe to apply each cycle
+
+**Params**
+- `id`: integer. Id of the agent that accepts the offer
+- `recipeIndex`: integer. Index of the global recipe for this agent to apply each cycle
+
+**Return value**
+- `recipeIndex`: integer. Updated index of the global recipe for this agent to apply each cycle
+
 #### * PUT `market/`
 
 Post offers in, or remove it from, the market, in the name of an agent
