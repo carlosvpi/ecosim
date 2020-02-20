@@ -1,4 +1,4 @@
-# ecosim
+# Ecosim
 Economic simulator
 
 ## Introduction
@@ -6,6 +6,16 @@ Economic simulator
 Ecosim is a market system simulator where different AIs compete to get the most resources. This README corresponds to the server where the simulation takes place. This server offers a REST API to external systems that can implemente the AI. A dashboard detailing the results of the simulation is also provided here.
 
 The communication model of ecosim is server-server. Ecosim is a server, and it communicates with other servers representing the AIs of the agents.
+
+### Contents
+
+This repository contains
+- The website of the Ecosim project
+- The Ecosim npm module
+- The Ecosim Simulation server
+  - Including its own web
+- An example of an Ecosim Agent server
+  - Including its own web
 
 ### Definitions
 
