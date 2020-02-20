@@ -67,7 +67,7 @@ The parameters of each ecosim simulation are:
 
 These are the endpoints that the user can use to request and give information to Ecosim.
 
-#### POST `apply/`
+#### * POST `apply/`
 
 Apply for a simulation, i.e., request the control of a number of agents in an incoming simulation. This is the only endpoint available until the simulation starts.
 
@@ -84,7 +84,7 @@ Apply for a simulation, i.e., request the control of a number of agents in an in
 - `ids`: array of integers, each of which represents an agent granted to the requester
 - `time`: moment at which the simulation will start
 
-#### GET `ecosim/static/`
+#### * GET `ecosim/static/`
 
 Request static information about the current simulation. All the values this endpoint returns are constant, so there is no need to call it more than once.
 
@@ -96,7 +96,7 @@ Request static information about the current simulation. All the values this end
 - `globals`: \[Recipe\]. Global recipes of the simulation
 - `agents`: integer. Number of agents in the simulation
 
-#### GET `ecosim/state/`
+#### * GET `ecosim/state/`
 
 Information about the state of the simulation.
 
@@ -108,7 +108,7 @@ Information about the state of the simulation.
 - `globalPool`: Pool. Union of all the pools of all the agents in the simulation
 - `state`: ("recruting" | "running" | "finished"). The state of the simulation
 
-#### GET `agent/`
+#### * GET `agent/`
 
 Get the status of the controled agent (P, S, O, i).
 
@@ -122,7 +122,7 @@ Get the status of the controled agent (P, S, O, i).
 - `global`: integer. Index of the global recipe that this agent is set to apply each cycle
 - `ranking`: integer. Position of the agent in the score ranking. `1` means it is winning
 
-#### GET `agent/score/`
+#### * GET `agent/score/`
 
 Get the score for an agent given some Pool.
 
@@ -134,7 +134,7 @@ Get the score for an agent given some Pool.
 - `score`: float. Result of the operation S(P), i.e., the current satisfaction of the agent
 - `amount`: integer. Amount of times the *pool* sent is available in the whole simulation at the moment of the request
 
-#### GET `market/`
+#### * GET `market/`
 
 Get information about the new offers in the market since last queried.
 
@@ -145,7 +145,7 @@ Get information about the new offers in the market since last queried.
 - `added`: \[Offer\]. Offers added to the market since last made this query
 - `removed`: \[integer\]. Ids of each offer that has been removed since last made this query
 
-#### POST `market/`
+#### * POST `market/`
 
 Accept an offer in the market
 
@@ -159,7 +159,7 @@ Accept an offer in the market
 
 When P changes as a result of acceppting an offer, the `onPoolChange` endpoint is not invoked.
 
-#### PUT `market/`
+#### * PUT `market/`
 
 Post offers in, or remove it from, the market, in the name of an agent
 
@@ -173,11 +173,11 @@ Post offers in, or remove it from, the market, in the name of an agent
 
 When offers are added as a result of this endpoint, the `onNewOffers` endpoint is not invoked for this agent.
 
-### Ecosim/User endpoints
+### * Ecosim/User endpoints
 
 These are the endpoints that the user server must provide to Ecosim, so communication can be asynchronous and efficient.
 
-#### POST `onStart/`
+#### * POST `onStart/`
 
 Sent when the simulation starts.
 
@@ -185,7 +185,7 @@ Sent when the simulation starts.
 
 **Return value** none
 
-#### POST `onPoolChange/`
+#### * POST `onPoolChange/`
 
 Sent when the Pool of an agent has changed.
 
@@ -193,16 +193,25 @@ Sent when the Pool of an agent has changed.
 - `id`: integer. Id of the agent whose pool changed
 - `pool`: Pool. New state of the agent's pool
 
-#### POST `onMarketChange/`
+#### * POST `onMarketChange/`
 
 Sent when the market changes, i.e., there are new offers or old offers have been removed.
 
 **Params**
-- `id`: integer. Id of the agent that is in the simulation where the market has changed.
+- `id`: integer. Id of the agent that is in the simulation where the market has changed
 - `added`: \[Offer\]. Offers added to the market since last sent this message or the user made the *GET `market/`* request
 - `removed`: \[integer\]. Ids of each offer that has been removed since last sent this message or the user made the *GET `market/`* request
 
-#### `onEnd`
+#### * POST `onAcceptedOffer/`
+
+Sent when an offer of a controlled agent has been accepted in the market.
+
+**Params**
+- `id`: integer. Id of the agent whose offer has been accepted
+- `offerId`: integer. Id of the offer that has been accepted
+- `pool`: Pool. New pool of the agent
+
+#### * POST `onEnd/`
 
 Sent when the simulation ends.
 
