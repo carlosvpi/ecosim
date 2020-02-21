@@ -1,10 +1,10 @@
 const { getId } = require('./util')
 const { Offer } = require('./offer')
 
-const Agent = module.exports.Agent = function Agent (name, simulation) {
+const Agent = module.exports.Agent = function Agent (name, simulation, id = getId()) {
     this.name = name
     this.simulation = simulation
-    this.id = getId()
+    this.id = id
     this.pool = {}
     this.globalRecipeIndex = null
     this.offers = []

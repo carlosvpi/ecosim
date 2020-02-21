@@ -1,10 +1,10 @@
 const { Recipe } = require('./recipe')
 const { getId } = require('./util')
 
-const Offer = module.exports.Offer = function Offer (owner, input, output) {
+const Offer = module.exports.Offer = function Offer (owner, input, output, id = getId()) {
 	this.owner = owner
 	this.recipe = new Recipe(input, output)
-    this.id = getId()
+    this.id = id
 }
 
 Offer.prototype.isApplicable = function isApplicable (pool) {
