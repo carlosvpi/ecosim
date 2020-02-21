@@ -1,1 +1,1 @@
-require('./lib/model.test')
+require('./ecosim')

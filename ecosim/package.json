@@ -1,0 +1,23 @@
+{
+  "name": "ecosim",
+  "version": "0.0.0",
+  "description": "npm module for ecosim",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlosvpi/ecosim.git"
+  },
+  "keywords": [
+    "economy",
+    "simulator"
+  ],
+  "author": "Carlos Vazquez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlosvpi/ecosim/issues"
+  },
+  "homepage": "https://github.com/carlosvpi/ecosim#readme"
+}
