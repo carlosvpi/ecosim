@@ -108,12 +108,13 @@ When P changes as a result of acceppting an offer, the `onPoolChange` endpoint i
 
 ### PUT `market/`
 
-Post offers in, or remove it from, the market, in the name of an agent
+Post offers in, or remove it from, the market, in the name of an agent, or make it directly to another agent.
 
 Params:
 - `id`: integer. Id of the agent that accepts the offer
 - `add`: \[Offer\]. Offers added to the market since last made this query
 - `remove`: \[integer\]. Ids of the offers the agent made that it wants to remove from the market
+- `destiny`: \[integer\]. Ids of the agents to which this offer is directly made. If not empty, the offer is not posted in the global market and only the beneficiary agents know about it.
 
 Result value:
 - `offerIds`: \[integer\]. Ids given to the added offers (in the same order)
