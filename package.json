@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/carlosvpi/ecosim#readme",
   "devDependencies": {
-    "mocha": "^6.2.2"
+    "mocha": "^10.2.0"
   },
   "dependencies": {
     "axios": "^0.19.2",
